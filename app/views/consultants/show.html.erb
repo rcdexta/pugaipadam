@@ -1,0 +1,42 @@
+
+<div class='empPopupData'>
+  <div class='photo_panel'><img src='<%= @consultant.photo.url %>' alt='<%= @consultant.name %>'/></div>
+  <div class='data_panel'>
+
+    <label class='name'><%= @consultant.name %></label>
+    <label class='role'><%= @consultant.role %>, </label><label class='grade'><%= @consultant.grade %></label>
+
+    <% if true or @consultant.employee_id == session[:current_user].employee_id %>
+        <%= link_to "Edit", edit_consultant_path(@consultant.employee_id), class: 'edit_profile_link' %>
+    <% end %>
+    <div class='clear'></div>
+
+
+    <div class='contact'>
+      <% if @consultant.mobile %>
+        <label class='mobile'><%= @consultant.mobile %></label>
+      <% end %>
+      <label class='email'><%= @consultant.email %></label>
+    </div>
+
+    <label class='exp'>TW Experience/ Prior Experience :
+      <span> <%= @consultant.tw_experience %> /  <%= @consultant.experience %></span></label>
+    <label class='exp'>Current Project : <span> <%= @consultant.project.try(:account_name) %></span></label>
+
+  </div>
+
+  <div class='clear'></div>
+  <%- if @consultant.persona %>
+      <label class='skills'>Online Persona</label>
+      <table>
+        <tr>
+          <%= render_persona(@consultant, :github) %>
+          <%= render_persona(@consultant, :twitter) %>
+          <%= render_persona(@consultant, :blog) %>
+          <%= render_persona(@consultant, :stackoverflow) %>
+          <%= render_persona(@consultant, :good_reads) %>
+        </tr>
+      </table>
+  <%- end %>
+
+</div>

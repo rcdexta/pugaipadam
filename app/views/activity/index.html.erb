@@ -1,0 +1,18 @@
+<%- @activity.all.each do |item| %>
+    <div class="activity">
+    	
+    <div class="photo">
+    	<img src="<%= item.consultant.photo.url%>" />
+    </div>
+      <div class="body">
+        
+        <span class="title"><%= item.consultant.nickname.empty? ? item.consultant.name : item.consultant.nickname   %></span>
+        <span class="details"><%= item.content.html_safe %></span>
+        <br/>
+        <abbr class="timeago"><%= time_ago_in_words item.at %> ago</abbr>
+      </div>
+    <div class="activity-icon <%= item.type %>"></div>
+      <div class="clear"></div>
+
+    </div>
+<%- end %>

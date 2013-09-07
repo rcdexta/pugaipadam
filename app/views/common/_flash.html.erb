@@ -1,0 +1,8 @@
+<% if flash and flash[:notice] %>
+    <script type="text/javascript">
+      $(function(){
+        console.log('hello');
+        alertify.success( '<%= flash[:notice] %>' );
+      });
+    </script>
+<% end %>

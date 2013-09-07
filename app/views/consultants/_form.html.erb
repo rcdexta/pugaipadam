@@ -1,0 +1,103 @@
+<%= form_for @consultant, :html => {:class => 'form-horizontal'} do |f| %>
+<div class="photo_panel">
+<img src='/<%= @consultant.photo.url %>' />
+  </div>
+<div class="left_panel">
+    <h2>Basic Details</h2>
+    
+  
+    <div class="control-group">
+      <%= f.label :photo, :class => 'control-label' %>
+      
+      <div class="controls">
+
+        <%= f.file_field :photo, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :employee_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :employee_id, :class => 'number_field', :disabled => true%>
+        <%= f.hidden_field :employee_id %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :nickname, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :nickname, :class => 'text_field', :placeholder => "Superstar Powerstar ..." %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :mobile, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :mobile, :class => 'text_field' %>
+      </div>
+    </div>
+
+    
+</div>
+
+  <div class="right_panel">
+    
+    
+        <h2>Your Social Persona</h2>
+    
+
+        <%= f.fields_for :persona do |p| %>
+
+          <div class="control-group">
+            <%= p.label :twitter, :class => 'control-label' %>
+            <div class="controls">
+              <%= p.text_field :twitter, :class => 'text_field', :placeholder => "@ladygaga" %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= p.label :github, :class => 'control-label' %>
+            <div class="controls">
+              <%= p.text_field :github, :class => 'text_field', :placeholder => "Just the user id" %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= p.label :stackoverflow, "Stack Overflow",     :class => 'control-label' %>
+            <div class="controls">
+              <%= p.text_field :stackoverflow, :class => 'text_field', :placeholder => "that goes like 1385252" %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= p.label :blog, :class => 'control-label' %>
+            <div class="controls">
+              <%= p.text_field :blog, :class => 'text_field', :placeholder => "Complete URL" %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= p.label :good_reads, "Good Reads", :class => 'control-label' %>
+            <div class="controls">
+              <%= p.text_field :good_reads, :class => 'text_field', :placeholder => "that goes like 5129887-rc" %>
+            </div>
+          </div>
+
+        <% end %>
+    
+  
+  </div>
+<div class="clear"></div>
+    <div class="form-actions">
+      <%= f.submit "Save Changes", :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  root_path, :class => 'btn' %>
+    </div>
+<% end %>
