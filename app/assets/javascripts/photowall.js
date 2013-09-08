@@ -7,7 +7,7 @@ $(function(){
 	
 	var allprojects = [];
 	var uniqueprojects = [];
-	
+
 	$.getJSON('/consultants', function(data) {
 		empJSON = data;
 		generateDropdowns();
@@ -15,7 +15,7 @@ $(function(){
 	});
 
     $.get('/activity', function(data) {
-       $('#activityFeed').html(data);
+        $('#activityFeed').html(data);
     });
 	
 	generateDropdowns = function(){
