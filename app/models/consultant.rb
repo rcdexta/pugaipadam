@@ -6,6 +6,7 @@ class Consultant
   field :jigsaw_id, type: Integer
   field :employee_id, type: Integer
   field :name, type: String
+  field :nickname, type: String
   field :mobile, type: String
   field :email, type: String
   field :role, type: String
