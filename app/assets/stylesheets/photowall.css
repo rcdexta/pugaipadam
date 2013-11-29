@@ -95,9 +95,9 @@ header ul a:hover{
 }
 
 #employeeDetails{
-	padding:60px 10px 10px 10px;
-    width: 74%;
-    float: left;
+	padding:60px 30px;
+    width: 99%;
+    margin: 0px auto;
 }
 
 #activityFeed {

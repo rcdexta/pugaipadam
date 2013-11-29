@@ -15,7 +15,7 @@ class ConsultantsController < ApplicationController
 
   def update
     consultant = Consultant.find_by employee_id: params[:consultant][:employee_id]
-    consultant.update_attributes! params[:consultant]
+    consultant.update_attributes! consultant_params
     flash.keep[:notice] = "Your profile has been updated!"
     redirect_to root_path
   end
@@ -26,6 +26,10 @@ class ConsultantsController < ApplicationController
   end
 
   private
+
+  def consultant_params
+    params[:consultant].permit(:photo, :employee_id, :name, :nickname, :mobile, :persona_attributes)
+  end
 
   def map_for(con)
     {
