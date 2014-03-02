@@ -13,7 +13,7 @@
 
 
     <div class='contact'>
-      <% if @consultant.mobile %>
+      <% if @consultant.mobile.present? %>
         <label class='mobile'><%= @consultant.mobile %></label>
       <% end %>
       <label class='email'><%= @consultant.email %></label>
