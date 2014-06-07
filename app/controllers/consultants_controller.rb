@@ -15,8 +15,7 @@ class ConsultantsController < ApplicationController
 
   def update
     @consultant = Consultant.find_by employee_id: params[:consultant][:employee_id]
-    @consultant.attributes.merge!(consultant_params)
-    if @consultant.save
+    if @consultant.update_attributes! consultant_params
       flash.keep[:notice] = "Your profile has been updated!"
       redirect_to root_path
     else
@@ -32,7 +31,8 @@ class ConsultantsController < ApplicationController
   private
 
   def consultant_params
-    params[:consultant].permit(:image_data)
+    params[:consultant].permit(:photo, :employee_id, :name, :nickname, :mobile, :image_data,
+                               persona_attributes: [:twitter, :github, :stackoverflow, :blog, :good_reads])
   end
 
   def map_for(con)

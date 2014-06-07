@@ -1,8 +1,47 @@
-.empPhoto img{
-    -webkit-transition:-webkit-filter 1s ease-in-out;
+.empPhoto img {
+    -webkit-transition: -webkit-filter 1s ease-in-out;
 }
 
-.empPhoto .grayscale{
+.empPhoto .grayscale {
     -webkit-filter: grayscale(1);
+    filter: grayscale(0.5) blur(10px);
+    filter: brightness(0.5);
     -webkit-filter: brightness(0.25);
+}
+
+.empPopupData .data_panel {
+    width: 400px;
+}
+
+.empPopupData .data_panel label.name {
+    font-size:3em;
+}
+
+.empPopupData .data_panel label {
+    font-size: 20px;
+}
+
+.empPopupData .data_panel div.contact label.email {
+    background-position: 0px -24px;
+}
+
+.empPopupData .data_panel div.contact label  {
+    padding: 0px 5px 7px 24px;
+}
+
+.empPopupData .photo_panel img {
+    width: 240px;
+    height: 240px;
+}
+
+.empPopupData .photo_panel {
+    width: 250px;
+}
+
+.empPopupData .skills {
+    font-size: 20px;
+}
+
+#employeePopup .content_panel{
+    height: 350px !important;
 }

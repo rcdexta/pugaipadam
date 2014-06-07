@@ -17,9 +17,9 @@ $(document).ready(function () {
             $("#employeePopup .content_panel").css("left",$(window).width()/2 - 250);
 
             $.colorbox({html: data,
-                width: 600,
-                speed: 500});
-
+                speed: 1000,
+                scrolling: false
+            });
 
         });
     }

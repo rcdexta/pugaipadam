@@ -1,6 +1,5 @@
-
 <div class='empPopupData'>
-  <div class='photo_panel'><img src='<%= @consultant.photo.url %>' alt='<%= @consultant.name %>'/></div>
+  <div class='photo_panel'><img src='<%= @consultant.photo.url(:profile) %>' alt='<%= @consultant.name %>'/></div>
   <div class='data_panel'>
 
     <label class='name'><%= @consultant.name %></label>
@@ -26,7 +25,8 @@
   </div>
 
   <div class='clear'></div>
-  <%- if @consultant.persona %>
+  <%- if @consultant.persona.present? %>
+
       <label class='skills'>Online Persona</label>
       <table>
         <tr>

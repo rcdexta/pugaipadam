@@ -28,9 +28,9 @@ class Consultant
   accepts_nested_attributes_for :persona
 
   has_mongoid_attached_file :photo,
-                            path: "public/system/photos/:employee_id/:style/:filename",
-                            url: "system/photos/:employee_id/:style/:filename",
-                            styles: {thumb: "160x160>"},
+                            path: 'public/system/photos/:employee_id/:style/:filename',
+                            url: 'system/photos/:employee_id/:style/:filename',
+                            styles: {thumb: '160x160>', profile: '240x240>'},
                             paperclip: [:cropper]
 
   Paperclip.interpolates :employee_id do |attachment, style|

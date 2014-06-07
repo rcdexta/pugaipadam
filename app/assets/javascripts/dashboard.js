@@ -1,28 +1,28 @@
 $(document).ready(function () {
 
-    $.getJSON('/consultants', function(data) {
+    $.getJSON('/consultants', function (data) {
         empJSON = data;
         generateDropdowns();
         generateData('grayscale');
     });
 
-    showPopup = function(event){
+    showPopup = function (event) {
         var curEmpIndex = ($(event.target).closest(".empData").attr("id"));
 
-        $.get('consultants/' + curEmpIndex, function(data) {
+        $.get('consultants/' + curEmpIndex, function (data) {
             $("#employeePopup .content").append(data);
-            $("#employeePopup").css("height",document.height);
+            $("#employeePopup").css("height", document.height);
 
-            $("#employeePopup .content_panel").css("top",scrollY + 150);
-            $("#employeePopup .content_panel").css("left",$(window).width()/2 - 250);
+            $("#employeePopup .content_panel").css("top", scrollY + 150);
+            $("#employeePopup .content_panel").css("left", $(window).width() / 2 - 250);
 
             $.colorbox({html: data,
-                width: 600,
-                speed: 500,
-                transition: "fade",
+                width: 700,
+                speed: 1000,
                 closeButton: false,
                 opacity: 0.25,
-                returnFocus: true});
+                scrolling: false
+            });
 
         });
     }

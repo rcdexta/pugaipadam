@@ -253,7 +253,7 @@ header ul a:hover{
 #employeePopup .content_panel{
 	border:3px solid #fff;
 	width:540px;
-	height:300px;
+	height:400px;
 	margin:20px auto;
 	position:absolute;
 	background-image:-webkit-linear-gradient(top, #eee 30%, #bbb);
@@ -305,7 +305,6 @@ header ul a:hover{
 }
 .empPopupData .data_panel{
 	float:left;
-	
 	width:295px;
 }
 .empPopupData .data_panel label{
