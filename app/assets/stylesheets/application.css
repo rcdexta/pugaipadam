@@ -13,5 +13,6 @@
  *= require jquery.Jcrop
  *= require jquery-ui
  *= require form
+ *= require colorbox
  *= require_tree .
  */

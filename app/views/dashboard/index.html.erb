@@ -1,5 +1,5 @@
 <header>
-  <%= javascript_include_tag "photowall", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "dashboard", "data-turbolinks-track" => true %>
   <%= image_tag "logo.png", alt: "Chennai foto wall" %>
 
   <%= render 'common/flash', flash: flash %>
@@ -27,7 +27,17 @@
 </header>
 
 <div>
-    <div id="employeeDetails"></div>
+    <div id="employeeDetails" class="dashboard-layout"></div>
     <div class="clear"></div>
 </div>
 
+
+<div id="employeePopup">
+
+  <div class="content_panel">
+    <a href="javascript:void(0)" class="close">Close</a>
+    <div class="content">
+
+    </div>
+  </div>
+</div>

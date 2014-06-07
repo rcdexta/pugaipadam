@@ -1,0 +1,8 @@
+.empPhoto img{
+    -webkit-transition:-webkit-filter 1s ease-in-out;
+}
+
+.empPhoto .grayscale{
+    -webkit-filter: grayscale(1);
+    -webkit-filter: brightness(0.25);
+}

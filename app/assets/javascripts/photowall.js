@@ -8,15 +8,9 @@ $(function(){
 	var allprojects = [];
 	var uniqueprojects = [];
 
-	$.getJSON('/consultants', function(data) {
-		empJSON = data;
-		generateDropdowns();
-		generateData();
-	});
-
-    $.get('/activity', function(data) {
-        $('#activityFeed').html(data);
-    });
+//    $.get('/activity', function(data) {
+//        $('#activityFeed').html(data);
+//    });
 	
 	generateDropdowns = function(){
 		$.each(empJSON, function(index){
@@ -55,12 +49,12 @@ $(function(){
 			
 	}
 	
-	generateData = function(){
+	generateData = function(grayscaleClass){
 		var filterRole = $("#filter_role a.sel").text().split("Showing ")[1];
 		var filterProject = $("#filter_project a.sel").text().split("Showing ")[1];
-		var sortby = $(".sort_panel a.sel").text().split("Sorted by ")[1];
+		var sortby = $(".sort_panel a.sel").text().split("Sorted by ")[1] || 'Name';
 		sortby = sortby.toLowerCase();
-//		console.log(filterRole +  " --- " + sortby);
+		console.log(filterRole +  " --- " + sortby);
 		
 		if (filterRole != "All Roles")
 		{ 
@@ -110,10 +104,9 @@ $(function(){
 		$.each(sorted_empJSON, function(index, val){
 			if (($.inArray(empJSON[val]['role'], role_selected) > -1) && ($.inArray(empJSON[val]['currentproject'], project_selected) > -1))
 			{
-				
 				var obj = empJSON[val];
 				var empData = "<div class='empData' id='" + val + "'>";
-				var empPhoto = empData + "<div class='empPhoto'><img src='" + obj.photo + "' /></div>";
+				var empPhoto = empData + "<div class='empPhoto'><img class='" + grayscaleClass + "' src='" + obj.photo + "' /></div>";
 				var empSlideData = empPhoto + "<div class='empSlideData'>";
 				empSlideData += "<span class='name'>" + obj.name + "</span>";
 				empSlideData += "<span>" + obj.role + "</span>";		
@@ -179,33 +172,11 @@ $(function(){
 		$(".empSlideData", this).slideUp("fast");	
 	}
 	
-	showPopup = function(event){
-		var curEmpIndex = ($(event.target).closest(".empData").attr("id"));
-
-        $.get('consultants/' + curEmpIndex, function(data) {
-            $("#employeePopup .content").append(data);
-            $("#employeePopup").css("height",document.height);
-            $("#employeePopup .content_panel").css("top",scrollY + 150);
-            $("#employeePopup .content_panel").css("left",$(window).width()/2 - 250);
-
-            $("#employeePopup").fadeIn("fast");
-
-            $(document).keydown(function(e){
-                var code = e.keyCode ? e.keyCode : e.which;
-                if (code == 27){
-                    $(".content_panel .close").click();
-                }
-            });
-        });
-	}
-	
 	$(".content_panel .close").click(function(){
 		$("#employeePopup").fadeOut("fast");
 		$("#employeePopup .content").html("");		
 	});
 
-	
 	$("#activityFeed").css("height",document.height-70);
-	
 	
 });

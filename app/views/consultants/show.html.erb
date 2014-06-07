@@ -6,7 +6,7 @@
     <label class='name'><%= @consultant.name %></label>
     <label class='role'><%= @consultant.role %>, </label><label class='grade'><%= @consultant.grade %></label>
 
-    <% if true or @consultant.employee_id == session[:current_user].employee_id %>
+    <% if false and @consultant.employee_id == session[:current_user].employee_id %>
         <%= link_to "Edit", edit_consultant_path(@consultant.employee_id), class: 'edit_profile_link', title: 'Edit' %>
     <% end %>
     <div class='clear'></div>
