@@ -5,23 +5,15 @@
 
   <%= render 'common/flash', flash: flash %>
 
-  <div class="sort_panel">
-    <a href="javascript:void(0)" class="sel">Sorted by Name</a>
-    <ul id="sort_list" class="hide">
-      <li><a href="javascript:void(0)">Name</a></li>
-      <li><a href="javascript:void(0)">Date Joined</a></li>
-      <li><a href="javascript:void(0)">Role</a></li>
-    </ul>
-  </div>
 
-  <div class="filter_panel" id="filter_role">
+  <div class="filter_panel hidden" id="filter_role">
     <a href="javascript:void(0)" class="sel">Showing All Roles</a>
     <ul id="dropdown_role" class="hide">
 
     </ul>
   </div>
 
-  <div class="filter_panel" id="filter_project">
+  <div class="filter_panel hidden" id="filter_project">
     <a href="javascript:void(0)" class="sel">Showing All Projects</a>
     <ul id="dropdown_project" class="hide"></ul>
   </div>
