@@ -42,7 +42,7 @@ class Consultant
   protected
   def decode_base64_image
     image_data = self.attributes.delete('image_data')
-    if image_data
+    if image_data.present?
       decoded_data = Base64.decode64(image_data.split(',').last)
 
       data = StringIO.new(decoded_data)

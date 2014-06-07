@@ -2,7 +2,7 @@ class ConsultantsController < ApplicationController
 
   def index
     results = {}
-    Consultant.each do |con|
+    Consultant.includes(:persona, :project).all.each do |con|
       results[con.employee_id] = map_for(con)
     end
     render json: results
