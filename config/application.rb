@@ -25,5 +25,7 @@ module PugaipadamRails4
     config.assets.precompile += %w(photo_wall.js)
 
     Paperclip.options[:command_path] = "/usr/local/bin"
+
+    Cocaine::CommandLine.runner = Cocaine::CommandLine::BackticksRunner.new
   end
 end

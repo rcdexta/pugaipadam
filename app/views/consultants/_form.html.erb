@@ -1,32 +1,44 @@
-<%= javascript_include_tag "upload" %>
-<%= javascript_include_tag "jquery.Jcrop.min" %>
-<%= stylesheet_link_tag "jquery.Jcrop.min" %>
+<%= javascript_include_tag "crize_upload" %>
 
-<%= form_for @consultant, :html => {:class => 'form-horizontal'} do |f| %>
+<%= form_for @consultant, html: {class: 'form-horizontal', multipart: true} do |f| %>
+
+    <% if @consultant.errors.any? %>
+        <div id="error_explanation">
+          <h2>Please fix the following values:</h2>
+          <ul>
+            <% @consultant.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
     <div id="photoUploadPopup">
       <div class="content_panel">
+        <a href="javascript:void(0)" class="close">Close</a>
         <img src=''/>
-      </div>
 
+        <div class="apply btn">Apply</div>
+      </div>
     </div>
 
     <div class="photo_panel">
-      <img src='/<%= @consultant.photo.url %>'/>
+      <%= f.hidden_field :image_data %>
+      <div id="img-container">
+        <img src='/<%= @consultant.photo.url %>'/>
+      </div>
+      <br/>
+
+      <div class="photo-upload">
+        <input type="button" class="btn btn-primary" id="open-crize" value="Upload Picture"/>
+      </div>
+
+
+      <div id="crize"></div>
     </div>
 
     <div class="left_panel">
       <h2>Basic Details</h2>
-
-
-      <div class="control-group">
-        <%= f.label :photo, :class => 'control-label' %>
-
-        <div class="controls">
-
-          <%= f.file_field :photo, :class => 'text_field' %>
-        </div>
-      </div>
 
       <div class="control-group">
         <%= f.label :employee_id, :class => 'control-label' %>
@@ -57,11 +69,9 @@
         </div>
       </div>
 
-
     </div>
 
     <div class="right_panel">
-
 
       <h2>Your Social Persona</h2>
 

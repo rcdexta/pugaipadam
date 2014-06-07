@@ -10,7 +10,8 @@
  *
  *= require_self
  *= require photowall
- *= require alertify.core
- *= require alertify.default
+ *= require jquery.Jcrop
+ *= require jquery-ui
+ *= require form
  *= require_tree .
  */

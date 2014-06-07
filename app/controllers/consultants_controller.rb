@@ -14,10 +14,14 @@ class ConsultantsController < ApplicationController
   end
 
   def update
-    consultant = Consultant.find_by employee_id: params[:consultant][:employee_id]
-    consultant.update_attributes! consultant_params
-    flash.keep[:notice] = "Your profile has been updated!"
-    redirect_to root_path
+    @consultant = Consultant.find_by employee_id: params[:consultant][:employee_id]
+    @consultant.attributes.merge!(consultant_params)
+    if @consultant.save
+      flash.keep[:notice] = "Your profile has been updated!"
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def show
@@ -28,7 +32,7 @@ class ConsultantsController < ApplicationController
   private
 
   def consultant_params
-    params[:consultant].permit(:photo, :employee_id, :name, :nickname, :mobile, :persona_attributes)
+    params[:consultant].permit(:image_data)
   end
 
   def map_for(con)
@@ -42,7 +46,7 @@ class ConsultantsController < ApplicationController
         twexp: con.tw_experience,
         skills: "",
         currentproject: con.project.try(:account_name),
-        photo: con.photo.url
+        photo: con.photo.url(:thumb)
     }
   end
 end

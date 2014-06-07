@@ -10,7 +10,7 @@
 }
 body{
 	font-family:"myCustomFont1", Arial;
-	font-size: 12px;
+	font-size: 13px;
 	margin:0px;
 	padding:0px;
 	background-color:#111;
@@ -215,12 +215,21 @@ header ul a:hover{
 	background:url(/assets/icon_close.png) no-repeat;
 	font-size:0px;
 }
+#photoUploadPopup .close{
+    width:30px;
+    height:30px;
+    display:block;
+    position:relative;
+    float:right;
+    margin:-15px -15px 0px 0px;
+    background:url(/assets/icon_close.png) no-repeat;
+    font-size:0px;
+}
 .edit_profile_link{
 	
 	float:right;
 	margin:-18px -15px 0px 0px;	
 	background:url(/assets/icon_edit.png) no-repeat 6px 5px #fddf90;
-	
 	position:relative;
 	top:-10px;
 	right:-25px;
@@ -233,7 +242,7 @@ header ul a:hover{
 }
 .edit_profile_link:hover{
 	background:url(/assets/icon_edit.png) no-repeat 6px 5px #fdc93e;
-	box-shadow:0px 0px 5px #666;	
+	box-shadow:0px 0px 5px #666;
 }
 #employeePopup .content_panel{
 	border:3px solid #fff;
@@ -260,13 +269,19 @@ header ul a:hover{
 
 #photoUploadPopup .content_panel{
     border:3px solid #fff;
-    width:420px;
-    height:420px;
-    margin:20px auto;
+    margin: 50px auto;
     position:absolute;
     background-image:-webkit-linear-gradient(top, #eee 30%, #bbb);
     background-image:-moz-linear-gradient(top, #eee 30%, #bbb);
     background-image:linear-gradient(top, #eee 30%, #bbb);
+}
+
+#photoUploadPopup .content_panel img{
+    margin: 20px;
+}
+
+#photoUploadPopup .content_panel .apply{
+    margin: 5px;
 }
 
 .empPopupData{
@@ -314,7 +329,7 @@ header ul a:hover{
 }
 .empPopupData .data_panel div.contact label{
 	background:url(/assets/icons.png) no-repeat;
-	padding:3px 5px 10px 23px;	
+	padding:1px 5px 10px 23px;
 }
 .empPopupData .data_panel div.contact label.email{
 	background-position:0px -28px;	
@@ -362,19 +377,19 @@ header ul a:hover{
 	float:left;
 	width:20%;
 	padding-top:60px;
-	text-align: center;	
+	text-align: center;
 }
 
 .edit_form .left_panel{
 	float:left;
 	width:35%;
-	
+
 }
 
 .edit_form .right_panel{
 	float:right;
 	width:35%;
-	
+
 }
 
 .edit_form h2{
@@ -390,7 +405,7 @@ header ul a:hover{
 }
 
 .edit_form label{
-	color:#999;	
+	color:#999;
 	font-size:1.2em;
 	padding-bottom: 2px;
 }
@@ -418,7 +433,7 @@ header ul a:hover{
 }
 .edit_form .form-actions input:hover{
 	background:#fdbe15;
-	
+
 	cursor: pointer;
 }
 .edit_form .form-actions a{
