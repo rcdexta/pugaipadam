@@ -1,0 +1,23 @@
+<%= stylesheet_link_tag "login_style", "data-turbolinks-track" => true %>
+
+<div class="logo_container">
+  <%= image_tag "logo_large.png", alt: "Chennai foto wall" %>
+</div>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'login'}) do |f| %>
+    <p>
+      <label for="login">Employee Id:</label>
+      <input autofocus="autofocus" id="consultant_email" name="consultant[employee_id]" type="text">
+    </p>
+
+    <p>
+      <label for="password">Password:</label>
+      <%= f.password_field :password, autocomplete: "off" %></div>
+    </p>
+
+    <p class="login-submit">
+      <button class="login-button" name="commit" type="submit">Login</button>
+    </p>
+
+<% end %>
+

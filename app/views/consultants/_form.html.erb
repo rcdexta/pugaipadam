@@ -69,6 +69,22 @@
         </div>
       </div>
 
+      <h2>Password (Optional) </h2>
+
+      <div class="control-group">
+        <%= f.label :password, 'New Password', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :password_confirmation, "Confirm", :class => 'control-label' %>
+        <div class="controls">
+          <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "off" %>
+        </div>
+      </div>
+
     </div>
 
     <div class="right_panel">
@@ -120,7 +136,7 @@
     <div class="clear"></div>
     <div class="form-actions">
       <%= f.submit "Save Changes", :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+      <%= link_to t('.cancel'),
                   root_path, :class => 'btn' %>
     </div>
 <% end %>

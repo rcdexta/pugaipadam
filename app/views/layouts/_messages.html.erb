@@ -1,0 +1,17 @@
+<script type="text/javascript">
+
+$(function(){
+    Messenger.options = {
+        extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+        theme: 'air'
+    }
+
+    <% flash.each do |key, value| %>
+        Messenger().post({
+            message: '<%= value %>',
+            type: 'error',
+            showCloseButton: true
+        })
+    <% end %>
+});
+</script>

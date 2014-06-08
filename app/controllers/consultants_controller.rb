@@ -1,5 +1,8 @@
 class ConsultantsController < ApplicationController
 
+  before_action :authenticate_consultant!, only: [:edit, :update]
+  before_action :authorize_consultant!, only: [:edit]
+
   def index
     results = {}
     Consultant.includes(:persona, :project).all.each do |con|
@@ -15,7 +18,7 @@ class ConsultantsController < ApplicationController
 
   def update
     @consultant = Consultant.find_by employee_id: params[:consultant][:employee_id]
-    if @consultant.update_attributes! consultant_params
+    if @consultant.update_attributes consultant_params
       flash.keep[:notice] = "Your profile has been updated!"
       redirect_to root_path
     else
@@ -30,8 +33,14 @@ class ConsultantsController < ApplicationController
 
   private
 
+  def authorize_consultant!
+    if current_consultant.employee_id.to_s != params[:id]
+      render template: 'devise/sessions/authorized'
+    end
+  end
+
   def consultant_params
-    params[:consultant].permit(:photo, :employee_id, :name, :nickname, :mobile, :image_data,
+    params[:consultant].permit(:photo, :employee_id, :name, :nickname, :mobile, :image_data, :password, :password_confirmation,
                                persona_attributes: [:twitter, :github, :stackoverflow, :blog, :good_reads])
   end
 

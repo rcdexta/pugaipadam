@@ -1,6 +1,7 @@
 <header>
   <%= javascript_include_tag "wall", "data-turbolinks-track" => true %>
-  <%= image_tag "logo.png", alt: "Chennai foto wall" %>
+
+  <%= image_tag "logo.png", alt: "Chennai foto wall", class: 'logo-image' %>
 
   <%= render 'common/flash', flash: flash %>
 
@@ -24,18 +25,23 @@
     <a href="javascript:void(0)" class="sel">Showing All Projects</a>
     <ul id="dropdown_project" class="hide"></ul>
   </div>
+
+  <div class="login_panel">
+    <%= render 'devise/menu/login_items' %>
+  </div>
 </header>
 
 
 <div>
-    <div id="employeeDetails" class="consultant-layout"></div>
-    <div class="clear"></div>
+  <div id="employeeDetails" class="consultant-layout"></div>
+  <div class="clear"></div>
 </div>
 
 <div id="employeePopup">
 
   <div class="content_panel">
     <a href="javascript:void(0)" class="close">Close</a>
+
     <div class="content">
     </div>
   </div>

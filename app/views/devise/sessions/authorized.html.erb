@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag "login_style", "data-turbolinks-track" => true %>
+
+<div class="logo_container">
+  <%= image_tag "logo_large.png", alt: "Chennai foto wall" %>
+
+  <%= image_tag '401.png', class: 'unauthorized' %>
+
+  <p>You are not authorized to view this page!!!</p>
+
+  <p>
+    <span class="btn"  onClick="history.go(-1);return true;">Take me back</span>
+  </p>
+</div>
+
+

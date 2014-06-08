@@ -38,6 +38,8 @@ GEM
     arel (4.0.0)
     atomic (1.1.13)
     atomic (1.1.13-java)
+    bcrypt (3.1.7)
+    bcrypt (3.1.7-java)
     builder (3.1.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -51,6 +53,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.1)
     ffi (1.9.3-java)
@@ -67,6 +75,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    messengerjs-rails (1.4.1)
     method_source (0.8.2)
     mime-types (1.25)
     minitest (4.7.5)
@@ -75,6 +84,7 @@ GEM
     moped (1.5.1)
     multi_json (1.7.9)
     origin (1.1.0)
+    orm_adapter (0.5.0)
     paperclip (3.5.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -117,9 +127,6 @@ GEM
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
-    simple_form (3.0.2)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
     slop (3.5.0)
     spoon (0.0.4)
       ffi
@@ -150,21 +157,24 @@ GEM
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   java
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  devise
   jbuilder (~> 1.2)
   jquery-rails
+  messengerjs-rails
   mongoid!
   mongoid-paperclip
   pry
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
-  simple_form
   therubyrhino
   turbolinks
   uglifier (>= 1.3.0)

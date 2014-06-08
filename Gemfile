@@ -8,10 +8,10 @@ gem 'therubyrhino'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'mongoid-paperclip', :require => 'mongoid_paperclip'
-gem 'simple_form'
+gem 'devise'
+gem 'messengerjs-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

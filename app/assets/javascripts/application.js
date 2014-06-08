@@ -18,3 +18,5 @@
 //= require jquery.colorbox-min
 //= require jquery.flip.min
 //= require photowall
+//= require messenger
+//= require messenger-theme-future

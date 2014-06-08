@@ -17,7 +17,7 @@ $(document).ready(function () {
             $("#employeePopup .content_panel").css("left",$(window).width()/2 - 250);
 
             $.colorbox({html: data,
-                speed: 1000,
+                speed: 500,
                 scrolling: false
             });
 
