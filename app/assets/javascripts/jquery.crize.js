@@ -4,37 +4,42 @@
             this._buildHtml();
             var widget = this;
             this.element.dialog({
-                position: { my: 'top', at: 'top+80' },
                 width: 1024,
                 height: 700,
                 modal: true,
+                closeOnEscape: false,
                 dialogClass: 'noTitleStuff',
                 buttons: {
                     'Crop': widget._crop.bind(widget),
-                    'Save': widget._save.bind(widget)
+                    'Save': widget._save.bind(widget),
+                    'Cancel': widget._destroyCrize.bind(widget)
                 },
                 draggable: false,
                 resizable: false
             });
             this.element.find('#crop').click(this._crop.bind(this));
             this.element.find('#resize').click(this._resize.bind(this));
-            this._bindFileUpload();
             this.canvas = this.element.find("canvas")[0];
+            $('#crop-info').removeClass('hidden');
+            widget.imageType = this.options.imageType;
+            widget._drawImage(this.options.image);
+        },
+
+        _destroyCrize: function(){
+            this.jcropApi.release();
+            this.jcropApi.disable();
+            this.jcropApi.destroy();
+            this.element.dialog('close');
         },
 
         _save: function () {
-            $('#crop').click();
             if (this.options.onsave)
                 this.options.onsave({croppedCoords: this.croppedCoords, imageDataUrl: this.canvas.toDataURL('image/' + this.imageType)});
             this.element.dialog('close');
         },
 
         _buildHtml: function () {
-            var html = '<div class="fileUpload btn btn-primary">' +
-                '<span>Upload Photo</span>' +
-                '<input type="file" class="upload"/>' +
-                '</div>' +
-                '<span id="crop-info" class="hidden">You can crop the picture to the desired size. Also can scroll for large pics...</span>' +
+            var html = '<span id="crop-info" class="hidden">You can crop the picture to the desired size. Scroll and crop for large images!</span>' +
                 "<input type='button' id='crop' class='hidden' value='Crop'/>" +
                 "<div><canvas></canvas></div>";
             this.element.html(html);
