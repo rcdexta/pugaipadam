@@ -4,11 +4,13 @@
             this._buildHtml();
             var widget = this;
             this.element.dialog({
+                position: { my: 'top', at: 'top+80' },
                 width: 1024,
-                height: 768,
+                height: 700,
                 modal: true,
                 dialogClass: 'noTitleStuff',
                 buttons: {
+                    'Crop': widget._crop.bind(widget),
                     'Save': widget._save.bind(widget)
                 },
                 draggable: false,
@@ -21,6 +23,7 @@
         },
 
         _save: function () {
+            $('#crop').click();
             if (this.options.onsave)
                 this.options.onsave({croppedCoords: this.croppedCoords, imageDataUrl: this.canvas.toDataURL('image/' + this.imageType)});
             this.element.dialog('close');
@@ -31,7 +34,8 @@
                 '<span>Upload Photo</span>' +
                 '<input type="file" class="upload"/>' +
                 '</div>' +
-                "<input type='button' id='crop' value='Crop'/>" +
+                '<span id="crop-info" class="hidden">You can crop the picture to the desired size. Also can scroll for large pics...</span>' +
+                "<input type='button' id='crop' class='hidden' value='Crop'/>" +
                 "<div><canvas></canvas></div>";
             this.element.html(html);
         },
@@ -93,6 +97,7 @@
             this.element.find('input[type="file"]').change(function () {
                 var fileReader = new FileReader;
                 fileReader.onload = function () {
+                    $('#crop-info').removeClass('hidden');
                     widget._drawImage(this.result);
                 };
                 var fileType = this.files[0].type;

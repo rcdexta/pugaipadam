@@ -107,13 +107,13 @@ header ul a:hover{
 
 .consultant-layout{
     padding:60px 10px 10px 10px;
-    width: 100%;
+    width: 90%;
     margin: 0px auto;
 }
 
 .dashboard-layout{
     padding:60px 10px 10px 10px;
-    width: 100%;
+    width: 90%;
     margin: 0px auto;
 }
 
@@ -467,4 +467,8 @@ header ul a:hover{
 
 .hidden {
     display: none;
+}
+
+.master_container {
+    width: 100%;
 }

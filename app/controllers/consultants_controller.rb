@@ -18,8 +18,9 @@ class ConsultantsController < ApplicationController
 
   def update
     @consultant = Consultant.find_by employee_id: params[:consultant][:employee_id]
+    @consultant.image_data = consultant_params.delete(:image_data)
     if @consultant.update_attributes consultant_params
-      flash.keep[:notice] = "Your profile has been updated!"
+      flash.keep[:alert] = "Your profile has been updated!"
       redirect_to root_path
     else
       render :edit
