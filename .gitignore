@@ -18,5 +18,6 @@
 app/assets/photos
 .DS_Store
 public/system
+public/assets
 .keep
 
