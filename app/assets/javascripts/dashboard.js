@@ -9,44 +9,61 @@ $(document).ready(function () {
     showPopup = function (event) {
         var curEmpIndex = ($(event.target).closest(".empData").attr("id"));
 
-        $.get('consultants/' + curEmpIndex, function (data) {
-            $("#employeePopup .content").append(data);
-            $("#employeePopup").css("height", document.height);
+        var template = $("#popup_template").html();
 
-            $("#employeePopup .content_panel").css("top", scrollY + 150);
-            $("#employeePopup .content_panel").css("left", $(window).width() / 2 - 250);
+        var html = _.template(template, {employee_id: curEmpIndex, consultant: empJSON[curEmpIndex]});
 
-            $.colorbox({html: data,
-                width: 700,
-                speed: 1000,
-                closeButton: false,
-                opacity: 0.25,
-                scrolling: false
-            });
+        $("#employeePopup .content").append(html);
+        $("#employeePopup").css("height", document.height);
 
+        $("#employeePopup .content_panel").css("top", scrollY + 150);
+        $("#employeePopup .content_panel").css("left", $(window).width() / 2 - 250);
+
+        $.colorbox({html: html,
+            width: 700,
+            speed: 1000,
+            closeButton: false,
+            opacity: 0.25,
+            scrolling: false
         });
     }
 
+    window.rInterval = function (callback, delay) {
+        var dateNow = Date.now,
+            requestAnimation = window.requestAnimationFrame,
+            start = dateNow(),
+            stop,
+            intervalFunc = function () {
+                dateNow() - start < delay || (start += delay, callback());
+                stop || requestAnimation(intervalFunc)
+            }
+        requestAnimation(intervalFunc);
+        return{
+            clear: function () {
+                stop = 1
+            }
+        }
+    }
 
-    setInterval(function () {
+    window.rInterval(function () {
         $.colorbox.close()
         var items = $('.empData');
         var empDiv = $(items[Math.floor(Math.random() * items.length)]);
         var first = true;
 
         $('html, body').animate({
-                scrollTop: empDiv.offset().top - 300
-            }, 2000, function(){
-                if (first){
-                    first = false;
+            scrollTop: empDiv.offset().top - 300
+        }, 2000, null, function () {
+            if (first) {
+                first = false;
+                $(empDiv).find('img').toggleClass('grayscale');
+                $(empDiv).mouseover();
+                setTimeout(function () {
+                    $(empDiv).click();
                     $(empDiv).find('img').toggleClass('grayscale');
-                    $(empDiv).mouseover();
-                    setTimeout(function(){
-                        $(empDiv).click();
-                        $(empDiv).find('img').toggleClass('grayscale');
-                    },2000);
-                }
-            });
+                }, 2000);
+            }
+        });
     }, 15000);
 
 });

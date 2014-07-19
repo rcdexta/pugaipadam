@@ -35,7 +35,7 @@ header{
 	top:0px;
 }
 
-header .sort_panel, header .filter_panel, .logo-image{
+header .sort_panel, header .filter_panel, .logo-image, header .search_con{
 	float:left;
 	margin:-2px 10px 0px;
 }
@@ -180,33 +180,45 @@ header ul a:hover{
 	background:url(/assets/persona/facebook_g.png) no-repeat center center;
 }
 
-
 .empData{
-	float:left;
-	margin:5px;	
+    float:left;
+    margin:5px;
+    position: relative;
+    overflow: hidden;
 }
 
 .empPhoto{
-	width:160px;
-	height:160px;
-	padding:5px;
-	background:#fff;
-	cursor: pointer;
+    width:160px;
+    height:160px;
+    padding:5px;
+    background:#fff;
+    cursor: pointer;
 }
 .empSlideData{
-	background: rgba(0,0,0,0.7);
-	color:#fff;
-	width:170px;
-	height:50px;
-	position:absolute;
-	margin-top:-49px;
-	border-top: 1px solid #000;
-	display:none;
+    background: rgba(0,0,0,0.7);
+    color:#fff;
+    width:170px;
+    height:50px;
+    position:absolute;
+    margin-top:-49px;
+    border-top: 1px solid #000;
+    /*display:none;*/
+    bottom:-50px;
+    -moz-transition-duration:.2s;
+    -webkit-transition-duration:.2s;
+    -o-transition-duration:.2s;
+    transition-duration:.2s;
 }
+
+.empData:hover>.empSlideData {
+    bottom:0px;
+}
+
 .empSlideData span{
-	display:block;
-	padding:0px 5px 5px;	
+    display:block;
+    padding:0px 5px 5px;
 }
+
 .empSlideData span:first-child{
 	padding:5px;
 }

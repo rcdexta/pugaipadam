@@ -15,6 +15,7 @@
 //= require jquery-ui
 //= require jquery.Jcrop
 //= require jquery.crize
+//= require underscore-min
 //= require jquery.colorbox-min
 //= require photowall
 //= require messenger
