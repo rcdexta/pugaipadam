@@ -4,11 +4,10 @@ class ConsultantsController < ApplicationController
   before_action :authorize_consultant!, only: [:edit]
 
   def index
-    results = {}
-    Consultant.includes(:persona, :project).all.each do |con|
-      results[con.employee_id] = map_for(con)
+    consultants = Rails.cache.fetch('consultants', expires_in: 1.hour) do
+      Consultant.includes(:persona, :project).all.inject({}) { |r, con|  r[con.employee_id] = map_for(con); r }
     end
-    render json: results
+    render json: consultants
   end
 
   def edit
@@ -20,7 +19,7 @@ class ConsultantsController < ApplicationController
     @consultant = Consultant.find_by employee_id: params[:consultant][:employee_id]
     @consultant.image_data = consultant_params.delete(:image_data)
     if @consultant.update_attributes consultant_params
-      flash.keep[:alert] = "Your profile has been updated!"
+      flash.keep[:alert] = 'Your profile has been updated!'
       redirect_to root_path
     else
       render :edit
@@ -54,7 +53,7 @@ class ConsultantsController < ApplicationController
         grade: con.grade,
         exp: con.experience,
         twexp: con.tw_experience,
-        skills: "",
+        skills: '',
         currentproject: con.project.try(:account_name),
         photo: con.photo.url(:thumb)
     }

@@ -45,6 +45,7 @@ $(document).ready(function () {
         }
     }
 
+    var fifteenSecsInMillis = 15000;
     window.rInterval(function () {
         $.colorbox.close()
         var items = $('.empData');
@@ -64,6 +65,11 @@ $(document).ready(function () {
                 }, 2000);
             }
         });
-    }, 15000);
+    }, fifteenSecsInMillis);
+
+    var fourHoursInMillis = 14000000;
+    window.rInterval(function () {
+        window.location.reload();
+    }, fourHoursInMillis);
 
 });
