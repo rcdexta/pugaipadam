@@ -14,6 +14,7 @@ gem 'devise'
 gem 'messengerjs-rails'
 gem 'rufus-scheduler'
 gem 'puma'
+gem 'font-awesome-sass'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

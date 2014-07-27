@@ -22,7 +22,7 @@
     display: inline-block;
     *display: inline;
     *zoom: 1;
-    padding: 4px 12px;
+    padding: 4px 8px;
     margin-bottom: 0;
     font-size: 14px;
     line-height: 20px;
@@ -194,3 +194,45 @@
     border: 2px double black !important;
     margin: 10px 5px !important;
 }
+
+.logged_in_img {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 5px;
+    border: 1px solid #333;
+}
+
+*::-webkit-input-placeholder {
+    color: #555555;
+}
+
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color: red;
+}
+
+*::-moz-placeholder {
+    /* FF 19+ */
+    color: red;
+}
+
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: red;
+}
+
+#consultant_search {
+    padding: 5px;
+    font-size: 1.1em;
+    background: #000;
+    border: 1px solid #333;
+    color: #fff;
+    margin-top: -1px;
+    font-family: FontAwesome, myCustomFont1;
+    width:85%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+

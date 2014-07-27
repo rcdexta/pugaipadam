@@ -17,6 +17,6 @@
 //= require jquery.crize
 //= require underscore-min
 //= require jquery.colorbox-min
-//= require photowall
 //= require messenger
 //= require messenger-theme-future
+//= require photowall

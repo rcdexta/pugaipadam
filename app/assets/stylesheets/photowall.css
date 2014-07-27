@@ -37,12 +37,13 @@ header{
 
 header .sort_panel, header .filter_panel, .logo-image, header .search_con{
 	float:left;
-	margin:-2px 10px 0px;
+	margin:-2px 5px 0px;
+    width: 200px;
 }
 
 header .login_panel {
     float: right;
-    margin:-2px 10px 0px;
+    margin-top:-5px;
 }
 
 header .login_panel a{
@@ -210,7 +211,7 @@ header ul a:hover{
     transition-duration:.2s;
 }
 
-.empData:hover>.empSlideData {
+.empData:hover>.empSlideData,.empData.hover>.empSlideData {
     bottom:0px;
 }
 

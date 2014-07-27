@@ -1,5 +1,6 @@
 <% if consultant_signed_in? %>
-    <%= link_to 'Edit Profile', edit_consultant_path(current_consultant.employee_id), :class => 'btn btn-primary' %>
+    <img src="<%=current_consultant.photo.url(:thumb)%>" class="logged_in_img" >
+    <%= link_to 'Edit Profile', edit_consultant_path(current_consultant.employee_id), :class => 'btn btn-info' %>
     <%= link_to 'Sign out', destroy_consultant_session_path, :class => 'btn btn-primary' %>
 <% else %>
     <%= link_to 'Sign in', new_consultant_session_path, :class => 'btn btn-primary' %>
