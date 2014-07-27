@@ -27,7 +27,7 @@ module PugaipadamRails4
 
     Paperclip.options[:command_path] = "/usr/local/bin"
 
-    config.assets.enabled = false
+    config.assets.enabled = true
 
     Cocaine::CommandLine.runner = Cocaine::CommandLine::BackticksRunner.new
   end
