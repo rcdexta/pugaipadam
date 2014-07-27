@@ -485,3 +485,9 @@ header ul a:hover{
 .master_container {
     width: 100%;
 }
+
+.project_dropdown {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
