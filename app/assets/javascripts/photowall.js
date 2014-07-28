@@ -101,7 +101,7 @@ $(function(){
 
 		$("#employeeDetails").html("");
 
-        var nameFilter = $("#consultant_search").val();
+        var nameFilter = $("#consultant_search").val() || "";
         var empDataClass = nameFilter.length >= 3 ? 'empData hover' : 'empData';
 		$.each(sorted_empJSON, function(index, val){
 			if (($.inArray(empJSON[val]['role'], role_selected) > -1)

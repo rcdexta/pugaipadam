@@ -465,12 +465,6 @@ header ul a:hover{
 
 	cursor: pointer;
 }
-.edit_form .form-actions a{
-	color:#ccc;
-	padding:3px 10px;
-	margin-left: 10px;
-	border-left:1px dashed #ccc;
-}
 .empPopupData table img{
 	opacity: 0.5;
 }

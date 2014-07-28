@@ -136,7 +136,6 @@
     <div class="clear"></div>
     <div class="form-actions">
       <%= f.submit "Save Changes", :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel'),
-                  root_path, :class => 'btn' %>
+      <%= link_to 'Cancel', destroy_consultant_session_path, :class => 'btn btn-primary' %>
     </div>
 <% end %>
