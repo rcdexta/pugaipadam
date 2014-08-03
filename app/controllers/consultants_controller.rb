@@ -21,10 +21,8 @@ class ConsultantsController < ApplicationController
     if @consultant.update_attributes consultant_params
       flash.keep[:alert] = 'Your profile has been updated!'
       Rails.cache.delete 'consultants'
-      redirect_to root_path
-    else
-      render :edit
     end
+    render :edit
   end
 
   def show

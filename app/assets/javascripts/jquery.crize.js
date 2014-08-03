@@ -10,8 +10,7 @@
                 closeOnEscape: false,
                 dialogClass: 'noTitleStuff',
                 buttons: {
-                    'Crop': widget._crop.bind(widget),
-                    'Save': widget._save.bind(widget),
+                    'Apply': $.proxy(widget._cropAndSave, widget),
                     'Cancel': widget._destroyCrize.bind(widget)
                 },
                 draggable: false,
@@ -32,14 +31,20 @@
             this.element.dialog('close');
         },
 
+        _cropAndSave: function(){
+            this._crop();
+            this._save();
+        },
+
         _save: function () {
-            if (this.options.onsave)
+            if (this.options.onsave) {
                 this.options.onsave({croppedCoords: this.croppedCoords, imageDataUrl: this.canvas.toDataURL('image/' + this.imageType)});
+            }
             this.element.dialog('close');
         },
 
         _buildHtml: function () {
-            var html = '<span id="crop-info" class="hidden">You can crop the picture to the desired size. Scroll and crop for large images!</span>' +
+            var html = '<h3>Pugaipadam Photo Uploader</h3><span id="crop-info" class="hidden">Use the handle crop the picture to the desired size. Scroll and crop for large images!</span>' +
                 "<input type='button' id='crop' class='hidden' value='Crop'/>" +
                 "<div><canvas></canvas></div>";
             this.element.html(html);
@@ -87,7 +92,7 @@
                 ctx.drawImage(image, 0, 0, width, height);
 
                 if(widget.jcropApi) {
-                    widget.jcropApi.setSelect(0, 0, widget.canvas.width, widget.canvas.height);
+//                    widget.jcropApi.setSelect(0, 0, widget.canvas.width, widget.canvas.height);
                 } else {
                     widget._bindJcrop();
                 }
@@ -120,6 +125,7 @@
                 aspectRatio: 1,
                 bgColor: "white",
                 bgOpacity: 0.3,
+                setSelect:   [ 50, 50, widget.canvas.width-100, widget.canvas.height-100 ],
                 onSelect: function (coords) {
                     widget.croppedCoords = coords;
                 }

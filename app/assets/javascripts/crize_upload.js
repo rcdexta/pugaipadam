@@ -11,6 +11,7 @@ $(function () {
             $("#crize").crize({onsave: function (data) {
                 $('#img-container img').attr('src', data.imageDataUrl);
                 $('#consultant_image_data').val(data.imageDataUrl);
+                $('form').submit();
             },
                 image: this.result,
                 imageType: imageType
