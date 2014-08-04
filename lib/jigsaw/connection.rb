@@ -57,8 +57,7 @@ module Jigsaw
       end
 
       def conn
-        url = "jdbc:oracle:thin:@chioraprod01.thoughtworks.com:1521:JSAWPRD"
-        @conn ||= java.sql.DriverManager.getConnection(url, "JIGSAWPRD", "KL99gtX45n");
+        #TODO: Move to YML FILE
       end
 
       def driver
