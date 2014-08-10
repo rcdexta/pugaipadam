@@ -1,5 +1,6 @@
 require 'java'
 require 'lib/jigsaw/ojdbc6.jar'
+require 'lib/jigsaw/settings'
 
 module Jigsaw
   class Connection
@@ -21,6 +22,11 @@ module Jigsaw
           projects << project_hash_for(rs)
         end
         projects
+      end
+
+      def close_connections
+        @statement.close
+        @conn.close
       end
 
       private
@@ -57,12 +63,14 @@ module Jigsaw
       end
 
       def conn
-        #TODO: Move to YML FILE
+        url = "jdbc:oracle:thin:@#{Settings.host}:#{Settings.port}:#{Settings.sid}"
+        @conn ||= java.sql.DriverManager.getConnection(url, Settings.username, Settings.password);
       end
 
       def driver
-        @odriver ||= Java::JavaClass.for_name("oracle.jdbc.driver.OracleDriver")
+        @odriver ||= Java::JavaClass.for_name('oracle.jdbc.driver.OracleDriver')
       end
+
 
       CONSULTANTS_SQL = <<-SQL
         select con.id, con.employee_id, con.login_name, con.name as con_name, roles.name as role_name, grades.name as grade_name,
@@ -77,11 +85,11 @@ module Jigsaw
           select ra.consultant_id, pro.id project_id, acc.name account_name, pro.name project_name
           from (select *
                 from (select consultant_id,
-                            start_date,
+                            end_date,
                             project_proxy_id,
                             ROW_NUMBER ()
                             OVER (PARTITION BY consultant_id
-                            ORDER BY start_date desc) seq_no
+                            ORDER BY end_date desc) seq_no
                       from assignments
                       where consultant_id in (select id from consultants where office_id = 737701363 and status = 'A')
                     )

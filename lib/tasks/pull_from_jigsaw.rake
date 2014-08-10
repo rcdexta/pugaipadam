@@ -30,6 +30,8 @@ namespace :pugaipadam do
       consultant.update_attributes! project: project
     end
 
+    Jigsaw::Connection.close_connections
+
     puts "Done!"
   end
 

@@ -12,7 +12,6 @@ gem 'mongoid', github: 'mongoid/mongoid'
 gem 'mongoid-paperclip', :require => 'mongoid_paperclip'
 gem 'devise'
 gem 'messengerjs-rails'
-gem 'rufus-scheduler'
 gem 'puma'
 gem 'font-awesome-sass'
 
