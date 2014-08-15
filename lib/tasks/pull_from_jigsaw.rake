@@ -5,7 +5,7 @@ namespace :pugaipadam do
 
   task :jigsaw_sync => :environment do
 
-    puts "Pulling Consultant Details from Jigsaw..."
+    Rails.logger.warn "Pulling Consultant Details from Jigsaw..."
 
     jsaw_cons = Jigsaw::Connection.fetch_consultants
     jsaw_cons.each do |con|
@@ -17,9 +17,9 @@ namespace :pugaipadam do
       consultant.update_attributes! con
     end
 
-    puts "Done!"
+    Rails.logger.warn "Done!"
 
-    puts "Pulling Project Details from Jigsaw..."
+    Rails.logger.warn "Pulling Project Details from Jigsaw..."
 
     projects = Jigsaw::Connection.fetch_projects
     projects.each do |proj|
@@ -32,7 +32,7 @@ namespace :pugaipadam do
 
     Jigsaw::Connection.close_connections
 
-    puts "Done!"
+    Rails.logger.warn "Done!"
   end
 
 end

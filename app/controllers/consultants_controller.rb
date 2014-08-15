@@ -54,7 +54,8 @@ class ConsultantsController < ApplicationController
         twexp: con.tw_experience,
         skills: '',
         currentproject: con.project.try(:account_name),
-        photo: con.photo.url(:thumb)
+        photo: con.photo.url(:thumb),
+        profile_photo: con.photo.url(:profile)
     }
   end
 end

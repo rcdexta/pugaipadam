@@ -18,7 +18,7 @@
 }
 
 .empPopupData .data_panel label {
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .empPopupData .data_panel div.contact label.email {
@@ -30,12 +30,12 @@
 }
 
 .empPopupData .photo_panel img {
-    width: 240px;
-    height: 240px;
+    width: 300px;
+    height: 300px;
 }
 
 .empPopupData .photo_panel {
-    width: 250px;
+    width: 310px;
 }
 
 .empPopupData .skills {
@@ -43,5 +43,5 @@
 }
 
 #employeePopup .content_panel{
-    height: 350px !important;
+    height: 450px !important;
 }

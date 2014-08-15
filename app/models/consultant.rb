@@ -63,7 +63,7 @@ class Consultant
   has_mongoid_attached_file :photo,
                             path: 'public/system/photos/:employee_id/:style/:filename',
                             url: 'system/photos/:employee_id/:style/:filename',
-                            styles: {thumb: '160x160>', profile: '240x240>'},
+                            styles: {thumb: '160x160>', profile: '300x300>'},
                             paperclip: [:cropper]
 
   Paperclip.interpolates :employee_id do |attachment, style|

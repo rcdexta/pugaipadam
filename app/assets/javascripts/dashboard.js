@@ -20,7 +20,7 @@ $(document).ready(function () {
         $("#employeePopup .content_panel").css("left", $(window).width() / 2 - 250);
 
         $.colorbox({html: html,
-            width: 700,
+            width: 800,
             speed: 1000,
             closeButton: false,
             opacity: 0.25,

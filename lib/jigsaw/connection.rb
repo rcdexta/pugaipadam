@@ -38,7 +38,7 @@ module Jigsaw
           email: "#{row.get_string('login_name')}@thoughtworks.com",
           role: row.get_string('role_name'),
           grade: row.get_string('grade_name'),
-          tw_experience: exp_from_hire_date(Date.parse row.get_string('hire_date') ),
+          tw_experience: exp_from_hire_date(Date.parse row.get_string('start_date') ),
           experience: row.get_float('years_before_tw').round(1),
           active: (row.get_string('status') == 'A'? true : false)
         }
@@ -74,11 +74,15 @@ module Jigsaw
 
       CONSULTANTS_SQL = <<-SQL
         select con.id, con.employee_id, con.login_name, con.name as con_name, roles.name as role_name, grades.name as grade_name,
-               con.hire_date, con.years_before_tw, con.status
+               tenure.start_date, con.years_before_tw, con.status
         from consultants con
         join roles on con.role_id = roles.id
         join grades on con.grade_id = grades.id
+        join
+        (select consultant_id, start_date, ROW_NUMBER () over (partition by consultant_id order by start_date) rank
+        from tenures) tenure on tenure.consultant_id = con.id
         where con.office_id = 737701363
+        and tenure.rank = 1
       SQL
 
       PROJECSTS_SQL = <<-SQL
