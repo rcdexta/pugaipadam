@@ -8,7 +8,7 @@ class Persona
   field :good_reads, type: String
 
   def present?
-    twitter.present? or github.present? or stackoverflow.present? or blog.present? or good_reads.present?
+    [twitter, github, stackoverflow, blog, good_reads].any? { |p| p.present? }
   end
 
   belongs_to :consultant

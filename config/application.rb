@@ -30,5 +30,6 @@ module PugaipadamRails4
     config.assets.enabled = true
 
     Cocaine::CommandLine.runner = Cocaine::CommandLine::BackticksRunner.new
+
   end
 end

@@ -1,15 +1,16 @@
-ENV["RAILS_ENV"] ||= "test"
+ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
+require 'minitest/autorun'
+require 'minitest/reporters'
+Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-class ActiveSupport::TestCase
-  ActiveRecord::Migration.check_pending!
+class MiniTest::Spec
+  include FactoryGirl::Syntax::Methods
+end
 
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
-  fixtures :all
-
-  # Add more helper methods to be used by all tests here...
+class IntegrationTest < MiniTest::Spec
+  include Rails.application.routes.url_helpers
+  include ActionDispatch::Assertions::RoutingAssertions
+  register_spec_type /integration$/, self
+  register_spec_type /routes/, self
 end

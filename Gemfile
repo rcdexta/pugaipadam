@@ -17,10 +17,12 @@ gem 'font-awesome-sass'
 gem 'rufus-scheduler'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-group :development do
+group :development, :test do
+  gem 'minitest-rails', '~> 1.0'
+  gem 'minitest-reporters', '>= 0.5.0'
   gem 'pry'
+  gem 'factory_girl_rails'
 end

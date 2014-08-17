@@ -1,4 +1,5 @@
 module ConsultantHelper
+
   def render_persona(consultant, persona_type)
     content_tag :td do
       link_to persona_url(consultant, persona_type), target: "_blank" do
