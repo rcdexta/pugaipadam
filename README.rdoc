@@ -2,7 +2,7 @@
 
 The photo wall for organizations
 
-# Installation
+=== Installation
 
 You need JRuby as there is a dependency on Oracle. However, if the dependency is removed you can use MRI
 
