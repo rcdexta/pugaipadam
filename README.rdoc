@@ -1,28 +1,12 @@
-== README
+== Pugaipadam
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The photo wall for organizations
 
-Things you may want to cover:
+# Installation
 
-* Ruby version
+You need JRuby as there is a dependency on Oracle. However, if the dependency is removed you can use MRI
 
-* System dependencies
+Clone the repository and run `bundle install`
 
-* Configuration
+Make sure you have mongodb server running in local as the employee details are stores as documents.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
